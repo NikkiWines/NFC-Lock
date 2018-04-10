@@ -44,9 +44,14 @@ class ViewController: UIViewController {
         SparkCloud.sharedInstance().login(withUser: email!, password: password!) { (error:Error?) -> Void in
             if let _ = error {
                 print("Wrong credentials or no internet connectivity, please try again")
+                let alert = UIAlertController(title: "Username and/or Password incorrect.", message: "Try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                self.particleEmail.text = ""
+                self.particlePassword.text = ""
             }
             else {
-                print("Error: ", error as Any)
+                /* Set user defaults to maintain login */
                 self.defaults.set(1, forKey: "loggedin")
                 self.defaults.set(email, forKey: "email")
                 self.defaults.set(password, forKey: "password")
