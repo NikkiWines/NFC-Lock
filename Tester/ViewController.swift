@@ -19,15 +19,14 @@ class ViewController: UIViewController {
     /* Default setup functions */
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("defaults: ", defaults.bool(forKey: "loggedin"))
-        if (defaults.bool(forKey: "loggedin")) {
-           self.performSegue()
-        }
-        
+        print("viewDidLoad defaults: ", defaults.bool(forKey: "loggedin"))
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("defaults: ", defaults.bool(forKey: "loggedin"))
+        print("view did appear defaults: ", defaults.bool(forKey: "loggedin"))
+        if (defaults.bool(forKey: "loggedin")) {
+            self.performSegue()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,6 +67,7 @@ class ViewController: UIViewController {
      * Routes to main page
      */
     func performSegue() {
+        print("in perform segue")
         performSegue(withIdentifier: "status segue", sender: self)
     }
 }

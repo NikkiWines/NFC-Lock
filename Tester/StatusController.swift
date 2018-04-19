@@ -27,9 +27,9 @@ class StatusController: UIViewController, NFCNDEFReaderSessionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         /* verify device and begin nfc session */
-        //loadDevice();
-        nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
-        nfcSession.begin()
+        loadDevice();
+       // nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
+       // nfcSession.begin()
     }
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
         print("The session was invalidated: \(error.localizedDescription)")
